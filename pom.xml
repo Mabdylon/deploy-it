@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.mabdylon</groupId>
-    <artifactId>WhishList</artifactId>
+    <artifactId>WishList</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>WhishList</name>
+    <name>WishList</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -22,6 +22,51 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <mainServlet>FirstServlet</mainServlet>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/local</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+        <profile>
+            <id>cloudbees</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <mainServlet>SecondServlet</mainServlet>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/cloudbees</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>cloudbees-public-release</id>
+            <url>http://repository-cloudbees.forge.cloudbees.com/public-release</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
@@ -38,11 +83,34 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.0</version>
+                <configuration>
+                    <file>src/main/webapp/WEB-INF/web_maven.xml</file>
+                    <outputFile>src/main/webapp/WEB-INF/web.xml</outputFile>
+                    <replacements>
+                        <replacement>
+                            <token>MAVEN_MAIN_SERVLET</token>
+                            <value>${mainServlet}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <failOnMissingWebXml>true</failOnMissingWebXml>
                 </configuration>
             </plugin>
             <plugin>
@@ -70,7 +138,22 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.cloudbees</groupId>
+                <artifactId>bees-maven-plugin</artifactId>
+                <version>1.3.2</version>
+            </plugin>
         </plugins>
     </build>
-
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>config/sun_checks.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
