@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
@@ -26,8 +27,14 @@
     <profiles>
         <profile>
             <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <mainServlet>FirstServlet</mainServlet>
+                <db.user>mabdylon</db.user>
+                <db.pass>lcqnmajp</db.pass>
+                <db.url>jdbc:mysql://localhost/wishlist-db</db.url>
             </properties>
             <build>
                 <resources>
@@ -39,9 +46,6 @@
         </profile>
         <profile>
             <id>cloudbees</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <mainServlet>SecondServlet</mainServlet>
             </properties>
@@ -94,6 +98,18 @@
                             <token>MAVEN_MAIN_SERVLET</token>
                             <value>${mainServlet}</value>
                         </replacement>
+                        <replacement>
+                            <token>DB_USER</token>
+                            <value>${db.user}</value>
+                        </replacement>
+                        <replacement>
+                            <token>DB_PASSWORD</token>
+                            <value>${db.pass}</value>
+                        </replacement>
+                        <replacement>
+                            <token>DB_JDBC_URL</token>
+                            <value>${db.url>}</value>
+                        </replacement>
                     </replacements>
                 </configuration>
                 <executions>
@@ -145,15 +161,4 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <configuration>
-                    <configLocation>config/sun_checks.xml</configLocation>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
 </project>
