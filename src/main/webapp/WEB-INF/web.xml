@@ -1,8 +1,17 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
-    <resource name="jdbc/whishlist" auth="Container" type="javax.sql.DataSource">
-        <param name="username" value="mabdylon" />
-        <param name="password" value="lcqnmajp" />
-        <param name="url" value="" />
+    <resource-env-ref>
+        <res-ref-name>jdbc/deploy-it</res-ref-name>
+        <res-ref-type>javax.sql.DataSource</res-ref-type>
+        <res-auth>Container</res-auth>
+        <param name="username">
+            <value>${db.user}</value> 
+        </param>
+        <param name="password">
+            <value>${db.pass}</value> 
+        </param>
+        <param name="url">
+            <value>${db.url}</value> 
+        </param>
 
         <!-- Connection Pool settings -->
         <param name="maxActive" value="5" />
@@ -15,7 +24,7 @@
         <!-- Avoid idle database timeouts (for low-usage apps) -->
         <param name="validationQuery" value="SELECT 1" />
         <param name="testOnBorrow" value="true" />
-    </resource>
+    </resource-env-ref>
     
     <servlet>
         <servlet-name>MainServlet</servlet-name>
