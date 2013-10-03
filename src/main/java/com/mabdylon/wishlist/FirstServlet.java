@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FirstServlet extends HttpServlet {
 
     public static final int test = 0;
-    
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
@@ -31,7 +31,4 @@ public class FirstServlet extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
     }
-    
-    
-    
 }

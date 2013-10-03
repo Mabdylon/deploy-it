@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
     <dependencies>
@@ -41,6 +42,11 @@
             <artifactId>guava</artifactId>
             <version>15.0</version>
         </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.1.2</version>
+        </dependency>
     </dependencies>
     
     <profiles>
@@ -50,17 +56,19 @@
                 <activeByDefault>1</activeByDefault>
             </activation>
             <properties>
+                <specific.path.cloudbees>local</specific.path.cloudbees>
                 <db.user>mabdylon</db.user>
-                <db.pass>lcqnmajp</db.pass>
-                <db.url>jdbc:mysql://localhost/deploy-it</db.url>
+                <db.pass>deploy-it</db.pass>
+                <db.url>jdbc:mysql://localhost:3306/deploy-it</db.url>
             </properties>
         </profile>
         <profile>
             <id>cloudbees</id>
             <properties>
+                <specific.path.cloudbees>cloudbees</specific.path.cloudbees>
                 <db.user>Deploy-it</db.user>
-                <db.pass></db.pass>
-                <db.url>jdbc:mysql://localhost/deploy-it</db.url>
+                <db.pass>PASSWORD</db.pass>
+                <db.url>jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/deploy-it</db.url>
             </properties>
         </profile>
     </profiles>
@@ -106,13 +114,13 @@
                                 <include>web.xml</include>
                             </includes>
                         </resource>
-<!--                        <resource>
-                            <directory>src/main/resources/META-INF</directory>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/resources/${specific.path.cloudbees}/META-INF</directory>
                             <filtering>true</filtering>
                             <targetPath>META-INF</targetPath>
-                        </resource>-->
+                        </resource> 
                     </webResources>
-                    
                 </configuration>
             </plugin>
             <plugin>

@@ -25,14 +25,14 @@ import org.apache.tomcat.jdbc.pool.DataSource;
  * @author Mabdylon
  */
 public class DaoConnect {
-    
-    public static DaoConnect INSTANCE = new DaoConnect(); 
+
+    public static DaoConnect INSTANCE = new DaoConnect();
 
     private DaoConnect() {
     }
-    
+
     public Map testRetrieve() {
-        Map<String,String> results = Maps.newHashMap();
+        Map<String, String> results = Maps.newHashMap();
         try {
             Connection con = null;
             Context initContext = new InitialContext();
