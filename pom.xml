@@ -17,10 +17,104 @@
 
     <dependencies>
         <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <type>jar</type>
+            <version>1.0.1.Final</version>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <artifactId>antlr</artifactId>
+            <groupId>antlr</groupId>
+            <type>jar</type>
+            <version>2.7.7</version>
+        </dependency>
+        <dependency>
+            <artifactId>commons-pool</artifactId>
+            <groupId>commons-pool</groupId>
+            <type>jar</type>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <artifactId>dom4j</artifactId>
+            <groupId>dom4j</groupId>
+            <type>jar</type>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <artifactId>hamcrest-core</artifactId>
+            <groupId>org.hamcrest</groupId>
+            <type>jar</type>
+            <version>1.3</version>
+        </dependency>
+        <dependency>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <type>jar</type>
+            <version>1.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <artifactId>javassist</artifactId>
+            <groupId>org.javassist</groupId>
+            <type>jar</type>
+            <version>3.15.0-GA</version>
+        </dependency>
+        <dependency>
+            <artifactId>jboss-logging</artifactId>
+            <groupId>org.jboss.logging</groupId>
+            <type>jar</type>
+            <version>3.1.0.GA</version>
+        </dependency>
+        <dependency>
+            <artifactId>tomcat-juli</artifactId>
+            <groupId>org.apache.tomcat</groupId>
+            <type>jar</type>
+            <version>7.0.42</version>
+        </dependency>
+        <dependency>
+            <artifactId>xml-apis</artifactId>
+            <groupId>xml-apis</groupId>
+            <type>jar</type>
+            <version>1.0.b2</version>
+        </dependency>
+        <dependency>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <groupId>org.hibernate.common</groupId>
+            <type>jar</type>
+            <version>4.0.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>7.0.42</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.26</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -28,14 +122,14 @@
             <version>1.2.2</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.26</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.2.6.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-            <version>7.0.42</version>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -43,9 +137,10 @@
             <version>15.0</version>
         </dependency>
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.1.2</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>7.0.42</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     
@@ -153,6 +248,36 @@
                 <artifactId>bees-maven-plugin</artifactId>
                 <version>1.3.2</version>
             </plugin>
+            <!--            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.10</version>
+                <configuration>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
+                            <daemon>true</daemon>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
         </plugins>
     </build>
 </project>

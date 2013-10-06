@@ -1,6 +1,8 @@
+<%@page import="com.mabdylon.deployIt.dao.DaoConnect"%>
+<%@page import="java.util.Collection"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
-<%@page import="com.mabdylon.wishlist.dao.DaoConnect"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -14,12 +16,12 @@
         <h1>Hello World! (bis)</h1>
         <h2>Testing DB Access : </h2>
         <%            
-            Map results = DaoConnect.INSTANCE.testRetrieve();
-            out.print(results.keySet());
+            List<String> results = DaoConnect.INSTANCE.testRetrieve();
+            request.setAttribute("results", results);
         %>
 
-    <c:forEach var="item" items="results" >
-        <c:out value="item"/><br/>
+    <c:forEach var="item" items="${results}" >
+        <c:out value="${item}"/><br/>
     </c:forEach>
 
 </body>
