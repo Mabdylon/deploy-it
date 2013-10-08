@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/deploy-it"/>
-<Resource name="jdbc/deploy-it" auth="Container" type="javax.sql.DataSource"
-               maxActive="100" maxIdle="30" maxWait="10000"
-                driverClassName="com.mysql.jdbc.Driver">
-    <username>${db.user}</username>
-    <password>${db.pass}</password>
-    <url>${db.url}</url>
-</Resource>
+<Context antiJARLocking="true" path="/deploy-it">
+    <Resource name="jdbc/deploy-it" auth="Container" type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              testWhileIdle="true"
+              testOnBorrow="true"
+              testOnReturn="false"
+              validationQuery="SELECT 1"
+              validationInterval="30000"
+              timeBetweenEvictionRunsMillis="30000"
+              maxActive="100"
+              minIdle="10"
+              maxWait="10000"
+              initialSize="10"
+              removeAbandonedTimeout="60"
+              removeAbandoned="true"
+              logAbandoned="true"
+              minEvictableIdleTimeMillis="30000"
+              jmxEnabled="true"
+              jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+              username="${db.user}"
+              password="${db.pass}"
+              url="${db.url}">
+    </Resource>
+</Context>
