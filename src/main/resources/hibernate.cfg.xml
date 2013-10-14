@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.datasource">java:comp/env/jdbc/deploy-it</property>
-        <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.autocommit">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
-        <mapping class="com.mabdylon.deployIt.concept.ServerConnectionInformation"/>
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.connection.datasource">java:comp/env/jdbc/deploy-it</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="com.mabdylon.deployIt.concept.CartoDossier"/>
+    <mapping class="com.mabdylon.deployIt.concept.Article"/>
+    <mapping class="com.mabdylon.deployIt.concept.User"/>
+  </session-factory>
 </hibernate-configuration>

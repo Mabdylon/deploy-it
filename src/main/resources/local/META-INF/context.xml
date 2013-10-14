@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context antiJARLocking="true" path="/deploy-it">
-    <Resource name="jdbc/deploy-it" auth="Container" type="javax.sql.DataSource"
+    <ResourceLink
+        global="jdbc/deploy-it" 
+        name="jdbc/deploy-it"
+        type="javax.sql.DataSource"/>
+    <!--    <Resource name="jdbc/deploy-it" auth="Container" type="javax.sql.DataSource"
               driverClassName="com.mysql.jdbc.Driver"
               factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
               testWhileIdle="true"
@@ -23,5 +27,5 @@
               username="${db.user}"
               password="${db.pass}"
               url="${db.url}">
-    </Resource>
+    </Resource>-->
 </Context>

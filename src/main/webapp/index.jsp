@@ -1,4 +1,7 @@
-<%@page import="com.mabdylon.deployIt.dao.DaoConnect"%>
+<%@page import="com.mabdylon.deployIt.concept.User"%>
+<%@page import="com.mabdylon.deployIt.concept.Article"%>
+<%@page import="com.mabdylon.deployIt.dao.GenericDao"%>
+<%@page import="com.mabdylon.deployIt.concept.CartoDossier"%>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -13,16 +16,25 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World! (bis)</h1>
+        <h1>Hello World! dddd</h1>
         <h2>Testing DB Access : </h2>
         <%            
-            List<String> results = DaoConnect.INSTANCE.testRetrieve();
-            request.setAttribute("results", results);
+            List<Article> articles = new GenericDao<Article>(Article.class).loadAll();
+            request.setAttribute("articles", articles);
         %>
 
-    <c:forEach var="item" items="${results}" >
+    <c:forEach var="item" items="${articles}" >
         <c:out value="${item}"/><br/>
     </c:forEach>
 
+        <%            
+            List<User> users = new GenericDao<User>(User.class).loadAll();
+            request.setAttribute("users", users);
+        %>
+
+    <c:forEach var="item" items="${users}" >
+        <c:out value="${item}"/><br/>
+    </c:forEach>
+        
 </body>
 </html>
