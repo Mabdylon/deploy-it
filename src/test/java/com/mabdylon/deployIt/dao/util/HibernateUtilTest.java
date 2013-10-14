@@ -65,7 +65,7 @@ public class HibernateUtilTest {
         sessionFactory.close();
     }
 
-//    @Test
+    @Test
     public void testGetSessionFactory() {
         Query query = session.createSQLQuery("SELECT 'TEST'");
         Object result = query.uniqueResult();

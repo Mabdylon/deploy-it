@@ -17,8 +17,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
  */
 public class HibernateUtil {
 
-    private static SessionFactory sessionFactory;
-    private static ServiceRegistry serviceRegistry;
+    private static final SessionFactory sessionFactory;
+    private static final ServiceRegistry serviceRegistry;
 
     static {
         Configuration configuration = new Configuration();
