@@ -17,7 +17,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Article implements IEntite {
-    
+
     @Id @GeneratedValue()
     private Long id;
     private String title;
