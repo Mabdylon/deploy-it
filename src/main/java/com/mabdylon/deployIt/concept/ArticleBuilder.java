@@ -18,11 +18,6 @@ public class ArticleBuilder {
     public ArticleBuilder() {
     }
 
-    public ArticleBuilder setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
     public ArticleBuilder setTitle(String title) {
         this.title = title;
         return this;
@@ -33,14 +28,8 @@ public class ArticleBuilder {
         return this;
     }
 
-    public ArticleBuilder setCreated(Date created) {
-        this.created = created;
-        return this;
-    }
-
     public Article createArticle() {
-        return new Article();
-//        return new Article(id, title, content, new java.sql.Date(System.currentTimeMillis()));
+        return new Article(null, title, content, new java.sql.Timestamp(System.currentTimeMillis()));
     }
     
 }

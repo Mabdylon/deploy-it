@@ -8,6 +8,7 @@
     <property name="hibernate.connection.username">mabdylon</property>
     <property name="hibernate.connection.password">deploy-it</property>
     <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.show_sql">true</property>
     <mapping class="com.mabdylon.deployIt.concept.CartoDossier"/>
     <mapping class="com.mabdylon.deployIt.concept.Article"/>
     <mapping class="com.mabdylon.deployIt.concept.User"/> 

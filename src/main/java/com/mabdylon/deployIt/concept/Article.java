@@ -7,6 +7,7 @@
 package com.mabdylon.deployIt.concept;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,7 +23,17 @@ public class Article implements IEntite {
     private Long id;
     private String title;
     private String content;
-    private Date created;
+    private Timestamp created;
+
+    public Article() {
+    }
+
+    public Article(Long id, String title, String content, Timestamp created) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.created = created;
+    }
 
     public Long getId() {
         return id;
@@ -48,11 +59,11 @@ public class Article implements IEntite {
         this.content = content;
     }
 
-    public Date getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 

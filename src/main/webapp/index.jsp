@@ -19,7 +19,7 @@
         <h1>Hello World! dddd</h1>
         <h2>Testing DB Access : </h2>
         <%            
-            List<Article> articles = new GenericDao<Article>(Article.class).loadAll();
+            List<Article> articles = GenericDao.newDao(Article.class).loadAll();
             request.setAttribute("articles", articles);
         %>
 
@@ -28,7 +28,7 @@
     </c:forEach>
 
         <%            
-            List<User> users = new GenericDao<User>(User.class).loadAll();
+            List<User> users = GenericDao.newDao(User.class).loadAll();
             request.setAttribute("users", users);
         %>
 
