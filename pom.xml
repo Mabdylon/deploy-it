@@ -80,6 +80,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
+                    <!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml>-->
                     <failOnMissingWebXml>true</failOnMissingWebXml>
                     <webResources>
                         <resource>
@@ -192,8 +193,21 @@
             <version>5.1.24</version>
             <scope>provided</scope>
         </dependency>
-        
-        
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>1.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>1.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.17.1</version>
+        </dependency>
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
@@ -206,8 +220,8 @@
         </dependency>
         <dependency>
             <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0</version>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
